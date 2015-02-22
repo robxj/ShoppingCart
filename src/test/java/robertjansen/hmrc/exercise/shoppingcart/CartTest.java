@@ -34,8 +34,19 @@ public class CartTest {
 	@Test
 	public void testCheckoutAppleAppleOrangeApple() {
 		BigDecimal cost = new Cart(new String[]{"apple","apple","orange","apple"}).checkout();
-		assertEquals("Wrong cost", BigDecimal.valueOf(205,2), cost);
+		assertEquals("Wrong cost", BigDecimal.valueOf(145,2), cost);
 	}
 
+	@Test
+	public void testCheckoutFreeAppleOffer() {
+		BigDecimal cost = new Cart(new String[]{"apple","apple"}).checkout();
+		assertEquals("Wrong cost", BigDecimal.valueOf(60,2), cost);
+	}
+	
+	@Test
+	public void testCheckoutFreeOrangeOffer() {
+		BigDecimal cost = new Cart(new String[]{"orange","orange","orange"}).checkout();
+		assertEquals("Wrong cost", BigDecimal.valueOf(50,2), cost);
+	}
 	
 }
